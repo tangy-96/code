@@ -24,3 +24,13 @@ interview()
 #interview() 就叫 调用函数 interview ，有时也叫做 执行函数 interview。  
 当解释器 执行到 这行调用函数的代码时，就会跑到 函数 interview 里面，去执行函数里面的语句。  
 函数必须先定义，后面才能调用。
+
+
+for循环
+
+def interview ():
+    for i in range(0,5):
+        print(i)
+
+interview()
+
