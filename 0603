@@ -1,0 +1,12 @@
+0603练习记录
+字符串
+字符串元素索引
+# info 变量 记录 作者的信息，包括 名字，身高，体重
+info = {'name' :'黑羽白月', 'height':'180cm'}
+# 改变 作者的身高记录
+info['height'] = '175cm'
+# 打印身高到屏幕上
+print(info)
+
+hello = '明天你好'
+print(hello[1])
