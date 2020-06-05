@@ -1,0 +1,47 @@
+import requests
+import json
+import unittest
+
+
+
+class AddTrackNo(unittest.TestCase):
+    def setup(self):#初始化数据
+        self.rootUrl = "http://10.0.197.224/"
+
+
+
+    def test_getcookie(self):#获取用户登录的cookie
+        '''用户登录，获取cookie<账号：123@qq.com>
+        data = {
+            'username': 'wsscgr1',
+            'password': '1',
+            "Method": "Signin"
+        }
+        req = requests.post(self.user_url, json=data)
+        res = json.loads(req.text)
+        cookie = res["Cookies"]'''
+        cookie = 'G3_SESSION_V=ZGVjZjA0ZWUtNzY4NC00MmVlLWJlZTAtZjM3M2UyZWQ3ODhh'
+        return cookie    #返回用户cookie
+
+    def test_purchase_demand_query(self):   #查询
+        login_url = 'http://10.0.197.224/govp/purchase-demand-query/list'
+        data = {
+
+        }
+        headers = {
+            'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/79.0.3945.79 Safari/537.36',
+            'Content-Type': 'application/json',
+            'Cookie': 'G3_SESSION_V=OTZlZjFkNDItM2RmYi00ZTJlLTk4ZDctYTZjMGY5NGRiNmJl'
+
+        }
+        response = requests.post(login_url, data=json.dumps(data), headers=headers).json()
+        #self.assertEqual(response['enterpriseName'], '柴供应商')
+        print(response)
+
+
+        print('===================================')
+        # 遍历键和值
+        for key, value in response.items():
+            print(key + ": " + str(value))
+if __name__ == '__main__':
+    unittest.main()
