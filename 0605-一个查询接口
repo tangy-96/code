@@ -45,3 +45,49 @@ class AddTrackNo(unittest.TestCase):
             print(key + ": " + str(value))
 if __name__ == '__main__':
     unittest.main()
+
+
+
+=============================================================================================
+优化1.0
+from urllib.parse import urljoin
+
+from common.config import Config
+import requests
+import json
+
+class ConfigHttp():
+    def __init__(self):
+        global baseurl, url, port, timeout,cookie
+        baseurl = Config().get('HTTP').get('baseurl')
+        url = Config().get('MODEL1').get('url')
+        self.cookie = Config().get('HTTP').get('cookie')
+        self.url = urljoin(baseurl, url)
+        self.params = {}
+        self.data = {}
+        self.files = {}
+
+
+    #设置URL
+    def set_url(self):
+        """set url"""
+        self.url = urljoin(baseurl, url)
+        print(self.url)
+
+
+    def post(self):
+        """POST 方法"""
+        print(self.url)
+        print(self.cookie)
+        headers = {
+            'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/79.0.3945.79 Safari/537.36',
+            'Content-Type': 'application/json',
+            'Cookie': 'G3_SESSION_V=M2FiMzFhMGUtM2ZhZC00ZjkzLWFlZjYtNjhhNGQyMDJjMDU1'
+        }
+
+        response = requests.post(self.url, data=json.dumps(self.data), headers=headers).json()
+        print(response)
+        #return response
+
+c1 = ConfigHttp()
+c1.post()
