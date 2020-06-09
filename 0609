@@ -1,0 +1,11 @@
+利用获取的Cookies直接登录
+cookies = {'sessionid': 'h8ik444qh8ogywx4guh9fr2wm3x8ixnx'}
+res = requests.get(url,cookies=cookies,params=data)
+
+注意：之前报错是因为cookies书写格式问题
+ self.headers = {"Content-Type": "application/x-www-form-urlencoded",
+                        "Accept": "*/*",
+                        "Cookies" : "sessionid=h8ik444qh8ogywx4guh9fr2wm3x8ixnx"
+                        }
+                        
+因此将cookies提出来
